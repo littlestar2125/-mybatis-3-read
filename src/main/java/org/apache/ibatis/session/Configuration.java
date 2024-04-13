@@ -77,45 +77,99 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 /**
+ * mybatis 最核心的配置信息类
  * @author Clinton Begin
+ * todo 配置中具体项对应关系
  */
-//mybatis 最核心的配置文件
 public class Configuration {
 
-  //当前环境
+  //Mybatis环境 -- 事务工厂、数据源
   protected Environment environment;
 
+  // 是否开启自动映射
   protected boolean safeRowBoundsEnabled;
+
+  // 是否开启安全的结果处理
   protected boolean safeResultHandlerEnabled = true;
+
+  // 是否开启下划线转驼峰
   protected boolean mapUnderscoreToCamelCase;
+
+  // 是否开启懒加载
   protected boolean aggressiveLazyLoading;
+
+  // 是否开启多结果集
   protected boolean multipleResultSetsEnabled = true;
+
+  // 是否使用生成的主键
   protected boolean useGeneratedKeys;
+
+  // 是否使用列标签
   protected boolean useColumnLabel = true;
   //是否启用二级缓存
   protected boolean cacheEnabled = true;
+
+  // 是否在空行返回实例
   protected boolean callSettersOnNulls;
+
+  // 是否使用实际参数名
   protected boolean useActualParamName = true;
+
+  // 是否在空行返回实例
   protected boolean returnInstanceForEmptyRow;
+
+  // 是否压缩sql中的空格
   protected boolean shrinkWhitespacesInSql;
 
+  // 日志前缀
   protected String logPrefix;
+
+  // 日志实现类
   protected Class<? extends Log> logImpl;
+
+  // VFS实现类
   protected Class<? extends VFS> vfsImpl;
+
+  // 默认sql提供者类型
   protected Class<?> defaultSqlProviderType;
+
+  // 一级缓存级别  默认开启
   protected LocalCacheScope localCacheScope = LocalCacheScope.SESSION;
+
+  // 空值jdbc类型
   protected JdbcType jdbcTypeForNull = JdbcType.OTHER;
+
+  // 懒加载触发方法
   protected Set<String> lazyLoadTriggerMethods = new HashSet<>(Arrays.asList("equals", "clone", "hashCode", "toString"));
+
+
   protected Integer defaultStatementTimeout;
+
+  //默认获取大小
   protected Integer defaultFetchSize;
+
+  //默认结果集类型
   protected ResultSetType defaultResultSetType;
+
+  //默认执行器类型
   protected ExecutorType defaultExecutorType = ExecutorType.SIMPLE;
+
+  //自动映射行为
   protected AutoMappingBehavior autoMappingBehavior = AutoMappingBehavior.PARTIAL;
+
+  //自动映射未知列行为
   protected AutoMappingUnknownColumnBehavior autoMappingUnknownColumnBehavior = AutoMappingUnknownColumnBehavior.NONE;
 
+  //默认属性
   protected Properties variables = new Properties();
+
+  //反射工厂  --根据类获取类对应的反射信息
   protected ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
+
+  // 对象工厂 -- 创建对象
   protected ObjectFactory objectFactory = new DefaultObjectFactory();
+
+  // 对象包装工厂 默认实现类
   protected ObjectWrapperFactory objectWrapperFactory = new DefaultObjectWrapperFactory();
 
   protected boolean lazyLoadingEnabled = false;
